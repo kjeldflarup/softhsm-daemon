@@ -1,0 +1,11 @@
+version: "2"
+services:
+  softhsm-daemon:
+    build: .
+    container_name: softhsm-daemon
+
+    volumes:
+      - ./tokens:/var/lib/softhsm/tokens/
+    ports:
+      - 5657:5657
+    restart: unless-stopped

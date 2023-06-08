@@ -5,7 +5,7 @@ MAINTAINER Rodrigo Broggi <https://github.com/rbroggi>
 RUN apt-get update && \
     apt-get install -y git-core build-essential cmake libssl-dev libseccomp-dev wget autoconf automake libtool pkg-config
 
-ARG SOFTHSMV=2.5.0
+ARG SOFTHSMV=2.6.1
 
 # Builging sfthsmv2/installing
 RUN git clone --branch ${SOFTHSMV} https://github.com/opendnssec/SoftHSMv2.git && \
@@ -31,4 +31,3 @@ EXPOSE 5657
 ENV PKCS11_DAEMON_SOCKET="tls://0.0.0.0:5657"
 ENV PKCS11_PROXY_TLS_PSK_FILE="/root/test.psk"
 CMD [ "/usr/local/bin/pkcs11-daemon", "/usr/local/lib/softhsm/libsofthsm2.so" ]
-
